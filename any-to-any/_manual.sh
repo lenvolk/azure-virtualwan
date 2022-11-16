@@ -7,7 +7,7 @@ az account show  (to validate)
 az logout
 az account clear
 
-Alternatively (recommended), you can run step-by-step to get familiar with the provisioning process and the components deployed:
+# Alternatively (recommended), you can run step-by-step to get familiar with the provisioning process and the components deployed:
 
 ```bash
 #!/bin/bash
@@ -64,8 +64,8 @@ az network vnet create --address-prefixes 172.16.6.0/24 -n spoke6 -g $rg -l $reg
 
 echo Creating VMs in both branches...
 # create a VM in each branch spoke
-az vm create -n branch1VM  -g $rg --image ubuntults --public-ip-sku Standard --size $vmsize -l $region1 --subnet main --vnet-name branch1 --admin-username $username --admin-password $password --no-wait
-az vm create -n branch2VM  -g $rg --image ubuntults --public-ip-sku Standard --size $vmsize -l $region2 --subnet main --vnet-name branch2 --admin-username $username --admin-password $password --no-wait
+az vm create -n branch1VM  -g $rg --image ubuntults --public-ip-sku Standard --size $vmsize -l $region1 --subnet main --vnet-name branch1 --admin-username $username --admin-password $password --nsg '""' --no-wait
+az vm create -n branch2VM  -g $rg --image ubuntults --public-ip-sku Standard --size $vmsize -l $region2 --subnet main --vnet-name branch2 --admin-username $username --admin-password $password --nsg '""' --no-wait
 
 echo Creating NSGs in both branches...
 #Update NSGs:
